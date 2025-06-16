@@ -793,19 +793,7 @@ An example of a Metric with no labels and a MetricPoint with Sum, Count, and Cre
 
 ```openmetrics-add-eof
 # TYPE foo histogram
-foo_bucket{le="0.0"} 0
-foo_bucket{le="1e-05"} 0
-foo_bucket{le="0.0001"} 5
-foo_bucket{le="0.1"} 8
-foo_bucket{le="1.0"} 10
-foo_bucket{le="10.0"} 11
-foo_bucket{le="100000.0"} 11
-foo_bucket{le="1e+06"} 15
-foo_bucket{le="1e+23"} 16
-foo_bucket{le="1.1e+23"} 17
-foo_bucket{le="+Inf"} 17
-foo_count 17
-foo_sum 324789.3
+foo {count:17,sum:324789.3,bucket:[0.0:0,1e-05:0,0.0001:5,0.1:8,1.0:10,10.0:11,100000.0:11,1e+06:15,1e+23:16,1.1e+23:17,+Inf:17]}
 foo_created 1520430000.123
 ```
 
@@ -818,13 +806,7 @@ The "0.01" bucket has no Exemplar. The 0.1 bucket has an Exemplar with no Labels
 
 ```openmetrics-add-eof
 # TYPE foo histogram
-foo_bucket{le="0.01"} 0
-foo_bucket{le="0.1"} 8 # {} 0.054
-foo_bucket{le="1"} 11 # {trace_id="KOO5S4vxi0o"} 0.67
-foo_bucket{le="10"} 17 # {trace_id="oHg5SJYRHA0"} 9.8 1520879607.789
-foo_bucket{le="+Inf"} 17
-foo_count 17
-foo_sum 324789.3
+foo {count:17,sum:324789.3,bucket:[0.01:0,0.1:8,1.0:11,10.0:17,+Inf:17]} # {} 0.054 1520879607.7 # {trace_id="KOO5S4vxi0o"} 0.67 1520879602.890 # {trace_id="oHg5SJYRHA0"} 9.8 1520879607.789
 foo_created 1520430000.123
 ```
 
