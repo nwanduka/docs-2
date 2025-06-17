@@ -330,11 +330,9 @@ metric-type = counter / gauge / histogram / gaugehistogram / stateset
 metric-type =/ info / summary / unknown
 
 sample = metricname [labels] SP number [SP timestamp] [exemplar] LF
-sample =/ metricname [labels] SP "{" complextype "}" [SP timestamp] *exemplar-ts LF
+sample =/ metricname [labels] SP "{" complextype "}" [SP timestamp] *exemplar LF
 
-exemplar = exemplar-base [SP timestamp]
-exemplar-ts = exemplar-base SP timestamp
-exemplar-base = SP HASH SP labels SP number
+exemplar = SP HASH SP labels SP number [SP timestamp]
 
 labels = "{" [label *(COMMA label)] "}"
 
